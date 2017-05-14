@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">LyRo</string>
+    <string name="title_activity_pruebas">pruebas</string>
+    <string name="title_activity_led_pruebas">ledPruebas</string>
+    <string name="title_activity_led_pueba">ledPueba</string>
+</resources>

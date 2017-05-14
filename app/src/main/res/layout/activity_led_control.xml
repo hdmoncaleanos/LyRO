@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.lyro.lyro.ledControl">
+
+    <Button
+        android:id="@+id/sendB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enviar B"
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toBottomOf="@+id/sendA"
+        android:layout_marginEnd="19dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/sendA"
+        android:layout_marginRight="19dp" />
+
+    <SeekBar
+        android:id="@+id/seekBar1"
+        android:layout_width="289dp"
+        android:layout_height="43dp"
+        tools:layout_editor_absoluteY="429dp"
+        tools:layout_editor_absoluteX="36dp" />
+
+    <Button
+        android:id="@+id/sendDis"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Desconectar"
+        tools:layout_editor_absoluteY="357dp"
+        tools:layout_editor_absoluteX="119dp" />" />
+
+    <Button
+        android:id="@+id/sendC"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enviar C"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toTopOf="@+id/sendDis"
+        android:layout_marginStart="17dp"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="@+id/sendDis"
+        android:layout_marginLeft="17dp" />
+
+    <Button
+        android:id="@+id/sendA"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enviar A"
+        tools:layout_editor_absoluteY="70dp"
+        tools:layout_editor_absoluteX="36dp" />
+
+    <TextView
+        android:id="@+id/lumn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:layout_constraintBottom_creator="1"
+        android:layout_marginStart="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_constraintLeft_creator="1"
+        android:layout_marginBottom="52dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="16dp" />
+
+</android.support.constraint.ConstraintLayout>
