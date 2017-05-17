@@ -19,7 +19,7 @@ import java.util.UUID;
 
 public class ledControl extends ActionBarActivity {
 
-    Button btnSndA, btnSndB, btnSndC, btnDis;
+    Button btnSndA, btnSndB, btnSndC, btnDis, btnDirIzq, btnDirDer, btnBreak;
     SeekBar brightness;
     TextView lumn;
     String address = null;
@@ -46,6 +46,10 @@ public class ledControl extends ActionBarActivity {
         btnSndB = (Button)findViewById(R.id.sendB);
         btnSndC = (Button)findViewById(R.id.sendC);
         btnDis = (Button)findViewById(R.id.sendDis);
+        btnBreak = (Button)findViewById(R.id.freno);
+        btnDirDer = (Button)findViewById(R.id.diDer);
+        btnDirIzq = (Button)findViewById(R.id.dirIzq);
+
         brightness = (SeekBar)findViewById(R.id.seekBar1);
         lumn = (TextView)findViewById(R.id.lumn);
 
@@ -57,7 +61,7 @@ public class ledControl extends ActionBarActivity {
             @Override
             public void onClick(View v)
             {
-                send("A");      //method to turn on
+                send("A0000000");      //method to turn on
             }
         });
 
@@ -65,7 +69,7 @@ public class ledControl extends ActionBarActivity {
             @Override
             public void onClick(View v)
             {
-                send("B");   //method to turn off
+                send("B0000000");   //method to turn off
             }
         });
 
@@ -73,7 +77,7 @@ public class ledControl extends ActionBarActivity {
             @Override
             public void onClick(View v)
             {
-                send("C");   //method to turn off
+                send("C0000000");   //method to turn off
             }
         });
 
@@ -86,20 +90,45 @@ public class ledControl extends ActionBarActivity {
             }
         });
 
+        btnBreak.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                send("00001" + lumn); //close connection
+            }
+        });
+
+        btnDirDer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                send("0"+lumn+"2000");   //method to turn off
+            }
+        });
+
+        btnDirDer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                send("0"+lumn+"1000");   //method to turn off
+            }
+        });
+
+
         brightness.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 if (fromUser==true)
                 {
-                    lumn.setText(String.valueOf(progress));
-                    try
-                    {
-                        btSocket.getOutputStream().write(String.valueOf(progress).getBytes());
-                    }
-                    catch (IOException e)
-                    {
+                    if (progress<10)
+                        lumn.setText("10");
+                    else if (progress==100)
+                        lumn.setText("99");
+                    else
+                        lumn.setText(String.valueOf(progress));
 
-                    }
+
                 }
             }
 
